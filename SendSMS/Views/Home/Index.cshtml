@@ -1,0 +1,40 @@
+﻿<div id="body">
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h2>Send SMS Application.</h2>
+            </hgroup>
+            <p>
+                <mark>Send SMS API:</mark>
+                http://<i>mydomain</i>/api/sendsms/mobile=<i>tomobilenumber</i>&msg=<i>message</i>
+            </p>
+            <p>
+                <mark>API Authentication:</mark>
+                username: jay | password: pass
+            </p>
+        </div>
+    </section>
+    
+    @using (Html.BeginForm("SendSMS", "Home", FormMethod.Post, new { id = "SMSForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+        <section class="content-wrapper main-content clear-fix">
+            <ol class="round">
+                <li>
+                    <h5> To Mobile Number: </h5>
+                    <input type="text" id="txtmobileno" name="mobile" placeholder="mobile number" />
+                </li>
+                <li>
+                    <h5>Message</h5>
+                    <textarea id="txtmsg" name="msg" placeholder="sms text here..."></textarea>
+                </li>
+                <li>
+                    <input type="button" id="btnSend" value="Send SMS (Client Call)" onclick="sendsms()" />
+                    <input type="submit" id="btnSend2" value="Send SMS (Server Call)" />
+                </li>
+            </ol>
+        </section>
+    }
+
+    @Scripts.Render("~/bundles/myscripts")
+</div>
